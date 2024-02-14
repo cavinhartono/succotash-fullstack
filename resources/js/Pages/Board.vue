@@ -2,6 +2,11 @@
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import Authenticated from "@/Layouts/Authenticated.vue";
 import BoardNameForm from "@/Components/BoardNameForm.vue";
+import CreateBoardList from "@/Components/CreateBoardList.vue";
+
+const props = defineProps({
+    board: Object,
+});
 </script>
 
 <template>
@@ -168,22 +173,7 @@ import BoardNameForm from "@/Components/BoardNameForm.vue";
                         </div>
                     </div>
                     <div class="w-72">
-                        <button
-                            class="flex items-center bg-white-50/10 w-full hover:bg-white-50/20 text-white-50 p-2 text-sm font-medium rounded-md"
-                        >
-                            <span class="w-5 h-5">
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 24 24"
-                                    fill="currentColor"
-                                >
-                                    <path
-                                        d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"
-                                    ></path>
-                                </svg>
-                            </span>
-                            <span class="ml-1">Add another list</span>
-                        </button>
+                        <CreateBoardList :board="board" />
                     </div>
                 </div>
             </div>

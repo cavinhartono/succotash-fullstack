@@ -8,8 +8,10 @@ use Inertia\Inertia;
 
 class BoardController extends Controller
 {
-    public function index(Board $id)
+    public function show(Board $id)
     {
+        $id->load('lists');
+
         return Inertia::render("Board", [
             'board' => $id
         ]);

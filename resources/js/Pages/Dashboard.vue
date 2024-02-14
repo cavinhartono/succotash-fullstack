@@ -112,7 +112,7 @@ function onSubmit(closePopover) {
                         class="relative bg-blue-600 hover:bg-blue-700 rounded-md min-h-[7rem]"
                     >
                         <InertiaLink
-                            :href="route('board.index', { id: board.id })"
+                            :href="route('board.show', { id: board.id })"
                             class="absolute inset-0 p-3 text-lg font-bold text-white-50"
                         >
                             {{ board.name }}

@@ -20,7 +20,7 @@ async function edit() {
 
 function onSubmit() {
     isEditing.value = false;
-    form.put(route("board.update", { board: props.board.id }), {
+    form.put(route("board.update", { id: props.board.id }), {
         onError: () => form.reset(),
     });
 }
