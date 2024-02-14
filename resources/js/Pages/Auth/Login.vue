@@ -1,7 +1,6 @@
 <script setup>
 import GuestLayout from "@/Layouts/GuestLayout.vue";
 import InputError from "@/components/InputError.vue";
-import PrimaryButton from "@/components/PrimaryButton.vue";
 import TextInput from "@/components/TextInput.vue";
 import { Head, Link, useForm } from "@inertiajs/vue3";
 

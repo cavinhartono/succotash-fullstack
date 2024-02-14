@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BoardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
@@ -18,8 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::controller(BoardController::class)->group(function () {
+        Route::get('/board/{id}', 'index')->name('board.index');
+        Route::put('/board/{id}', 'update')->name('board.update');
+    });
+    Route::controller(DashboardController::class)->group(function () {
         Route::get('/dashboard', 'index')->name('dashboard');
-        Route::get('/show', 'show')->name('board.index');
+        Route::post('/dashboard', 'store')->name('dashboard.store');
     });
 });
 

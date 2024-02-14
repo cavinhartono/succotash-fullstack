@@ -1,13 +1,14 @@
 <script setup>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import Authenticated from "@/Layouts/Authenticated.vue";
+import BoardNameForm from "@/Components/BoardNameForm.vue";
 </script>
 
 <template>
     <Authenticated>
         <div class="flex flex-col h-full">
             <div class="shrink-0 flex justify-between items-center p-4">
-                <h1 class="text-2xl text-white-50 font-bold">Board title</h1>
+                <BoardNameForm :board="board" />
                 <div>
                     <button
                         class="inline-flex items-center bg-white-50/10 hover:bg-white-50/20 px-3 py-2 font-medium text-sm text-white-50 rounded-md gap-2"

@@ -9,14 +9,15 @@ import { Link } from "@inertiajs/inertia-vue3";
         >
             <a
                 class="text-2xl font-black tracking-tight"
-                :href="route('board.index')"
+                :href="route('dashboard')"
             >
                 imos
             </a>
             <nav>
                 <Link class="ml-3" href="/profile">
                     <img
-                        src="https://pbs.twimg.com/profile_images/1333896976602193922/MtWztkxt_400x400.jpg"
+                        :alt="$page.props.auth.user.name"
+                        :src="$page.props.auth.user.avatar_url"
                         class="h-9 w-9 inline rounded-full"
                     />
                 </Link>
