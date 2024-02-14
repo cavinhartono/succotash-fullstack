@@ -10,7 +10,7 @@ class BoardController extends Controller
 {
     public function show(Board $id)
     {
-        $id->load('lists');
+        $id->load('lists.cards');
 
         return Inertia::render("Board", [
             'board' => $id

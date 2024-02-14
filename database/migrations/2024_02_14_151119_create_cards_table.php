@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('card_lists', function (Blueprint $table) {
+        Schema::create('cards', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->foreignId('card_list_id')->references('id')->on('boards')->cascadeOnDelete();
             $table->foreignId('board_id')->references('id')->on('boards')->cascadeOnDelete();
+            $table->string('title');
+            $table->longText('desc')->nullable();
             $table->foreignId('user_id')->references('id')->on('users')->cascadeOnDelete();
             $table->timestamps();
         });
@@ -25,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('board_lists');
+        Schema::dropIfExists('cards');
     }
 };
