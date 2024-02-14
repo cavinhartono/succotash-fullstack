@@ -3,7 +3,9 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -19,7 +21,6 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'image',
         'email',
         'password',
     ];
@@ -43,13 +44,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function posts()
+    public function avatarUrl(): Attribute
     {
-        return $this->hasMany(Post::class);
+        return Attribute::make(
+            get: fn () => "https://www.gravatar.com/avatar/" . md5(strtolower($this->email)) . "?s=100&r=g"
+        );
     }
 
-    public function comments()
+    public function boards(): HasMany
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Board::class);
     }
 }

@@ -15,18 +15,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(BoardController::class)->group(function () {
-    Route::get('/board', 'index')->name('board.index');
-});
 
 Route::middleware('auth')->group(function () {
-    Route::controller(PostsController::class)->group(function () {
-        Route::get('/posts', 'index')->name('posts.index');
-        Route::get('/post/{name}/{title}', 'view')->name('posts.view');
-        Route::get('/post/create', 'create')->name('posts.create');
-        Route::post('/post/create', 'store')->name('posts.store');
-        Route::get('/post/edit/{name}', 'edit')->name('posts.edit');
-        Route::put('/post/edit/{name}', 'update')->name('posts.update');
+    Route::controller(BoardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('dashboard');
+        Route::get('/show', 'show')->name('board.index');
     });
 });
 
