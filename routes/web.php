@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\BoardController;
 use App\Http\Controllers\PostsController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,13 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::controller(DashboardController::class)->group(function () {
-    Route::get('/', 'index')->name('home');
-    Route::get('/styles', 'styles')->name('dashboard.style');
-    Route::get('/travels', 'travels')->name('dashboard.travel');
-    Route::get('/opinion', 'opinion')->name('dashboard.opinion');
-    Route::get('/must-reads', 'mustReads')->name('dashboard.mustRead');
-    Route::get('/{name}', 'profile')->name('dashboard.index')->middleware('auth');
+Route::controller(BoardController::class)->group(function () {
+    Route::get('/board', 'index')->name('board.index');
 });
 
 Route::middleware('auth')->group(function () {
